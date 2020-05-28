@@ -21,19 +21,20 @@ window.addEventListener("load", function() {
       }
       document.getElementById("pilotStatus").innerHTML = `Pilot ${pilot.value} Ready`;
       document.getElementById("copilotStatus").innerHTML = `Co-pilot ${coPilot.value} Ready`;
-      if (fuel.level < 10000) {
+
+      if (fuel.value < 10000) {
          document.getElementById("faultyItems").style.visibility = "visible";
-         document.getElementById("fuelStatus").innerHTML = "There is not enough fuel for the journey.";
+         document.getElementById("fuelStatus").innerHTML = "There is not enough fuel for the journey";
          document.getElementById("launchStatus").style.color = "red";
          document.getElementById("launchStatus").innerHTML = "Shuttle not ready for launch";
       }
-      else if (cargo.value > 10000) {
+      if (cargo.value > 10000) {
          document.getElementById("faultyItems").style.visibility = "visible";
-         document.getElementById("cargoStatus").innerHTML = "There is too much mass for the shuttle to take off.";
+         document.getElementById("cargoStatus").innerHTML = "There is too much mass for the shuttle to take off";
          document.getElementById("launchStatus").style.color = "red";
          document.getElementById("launchStatus").innerHTML = "Shuttle not ready for launch";
       }
-      else {
+      else if (cargo.value < 10000 && fuel.value > 10000) {
          document.getElementById("launchStatus").style.color = "green";
          document.getElementById("launchStatus").innerHTML = "Shuttle is ready for launch";
       }
